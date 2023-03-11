@@ -148,7 +148,7 @@ class ViewMenu(menus.Menu):
             if wait:
                 await self._event.wait()
 
-    def send_with_view(self, ctx, *args, **kwargs):
+    def send_with_view(self, ctx):
         self.ctx = ctx
         return ctx.reply(view=self.build_view())
 
