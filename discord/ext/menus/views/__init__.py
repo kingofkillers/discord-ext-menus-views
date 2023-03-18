@@ -135,7 +135,7 @@ class ViewMenu(menus.Menu):
         self._event.clear()
         msg = self.message
         if msg is None:
-            self.message = msg = await self.send_initial_message(ctx, channel)
+            self.message = msg = await ctx.reply(send_initial_message)
 
         if self.should_add_reactions():
             for task in self.__tasks:
@@ -157,8 +157,8 @@ class ViewMenu(menus.Menu):
        
         reference = self.ctx.message.reference if self.ctx and self.ctx.message else None
 
-        return messageable.reply(*args, **kwargs, view=self.build_view(), reference=reference)
-        #return messageable.reply(*args, **kwargs, view=self.build_view())
+        #return messageable.reply(*args, **kwargs, view=self.build_view(), reference=reference)
+        return messageable.send(*args, **kwargs, view=self.build_view())
 
 
     def stop(self):
