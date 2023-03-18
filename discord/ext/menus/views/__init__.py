@@ -135,7 +135,7 @@ class ViewMenu(menus.Menu):
         self._event.clear()
         msg = self.message
         if msg is None:
-            self.message = msg = await ctx.reply(send_initial_message)
+            self.message = msg = await ctx.reply(send_initial_message, channel)
 
         if self.should_add_reactions():
             for task in self.__tasks:
